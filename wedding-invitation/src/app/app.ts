@@ -7,6 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './app.scss',
 })
 export class App {
+  envelopeOpen = false;
+  envelopeOpening = false;
+  envelopeFading = false;
+
+  openEnvelope() {
+    if (this.envelopeOpening) return;
+    this.envelopeOpening = true;
+    // After flap opens and letter rises, wait a moment, then fade out
+    setTimeout(() => {
+      this.envelopeFading = true;
+    }, 2200);
+    // Remove overlay from DOM after fade animation completes
+    setTimeout(() => {
+      this.envelopeOpen = true;
+    }, 3000);
+  }
+
   events = [
     {
       icon: 'civic',

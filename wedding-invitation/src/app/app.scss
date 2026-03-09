@@ -24,6 +24,358 @@ $white: #ffffff;
 }
 
 // ======================
+// Envelope Overlay
+// ======================
+$env-body: #c9a48a;        // warm dusty rose body
+$env-body-dark: #b08968;   // darker shade for depth
+$env-flap: #d4b49a;        // lighter flap (top lid)
+$env-flap-dark: #c19a7e;   // flap fold line
+$env-pocket: #bfa08a;      // front pocket slightly different
+$env-liner: #f5ede6;       // cream liner visible behind letter
+
+.envelope-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background: linear-gradient(160deg, #faf8f5 0%, #f2ece4 50%, #faf8f5 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+
+  &.opening {
+    pointer-events: none;
+  }
+
+  &.fading {
+    animation: envelopeFadeOut 0.8s ease-in forwards;
+  }
+}
+
+// === Floating petals ===
+.envelope-petals {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.petal {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(ellipse, rgba($peach-light, 0.7) 0%, transparent 70%);
+  border-radius: 50% 0 50% 0;
+  opacity: 0;
+  animation: floatPetal 8s ease-in-out infinite;
+}
+
+.petal-1 { left: 12%; animation-delay: 0s; width: 10px; height: 10px; }
+.petal-2 { left: 30%; animation-delay: 1.5s; width: 14px; height: 14px; }
+.petal-3 { left: 52%; animation-delay: 3s; }
+.petal-4 { left: 72%; animation-delay: 1s; width: 10px; height: 10px; }
+.petal-5 { left: 90%; animation-delay: 4s; width: 8px; height: 8px; }
+
+@keyframes floatPetal {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.5; }
+  90% { opacity: 0.2; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+// === Wrapper ===
+.envelope-wrapper {
+  position: relative;
+  width: 360px;
+  height: 250px; // just the envelope body size
+}
+
+// =====================
+// LETTER — behind envelope
+// =====================
+.envelope-letter {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  right: 20px;
+  bottom: 10px;
+  background: $white;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  box-shadow: 0 4px 20px rgba($brown, 0.1);
+  transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1) 0.4s,
+              z-index 0s linear 0.4s;
+
+  .opening & {
+    transform: translateY(-240px);
+    z-index: 10;
+  }
+}
+
+.letter-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 20px 28px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.letter-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.7rem;
+  color: $brown-lighter;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.envelope-names {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.2rem;
+  color: $peach-dark;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.envelope-ornament {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.envelope-ornament-line {
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, $peach-light, transparent);
+}
+
+.envelope-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  color: $brown-light;
+  letter-spacing: 0.15em;
+}
+
+.envelope-invite {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.05rem;
+  color: $peach-dark;
+  margin-top: 2px;
+}
+
+// =====================
+// ENVELOPE
+// =====================
+.envelope {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  filter: drop-shadow(0 8px 24px rgba($brown, 0.2));
+}
+
+// Main body — the full envelope rectangle
+.envelope-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, $env-body 0%, $env-body-dark 100%);
+  border-radius: 6px;
+  z-index: 2;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 6px;
+    background: linear-gradient(135deg, transparent 40%, rgba($white, 0.06) 50%, transparent 60%);
+  }
+}
+
+// Front pocket — bottom triangular fold
+.envelope-pocket {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65%;
+    background: linear-gradient(0deg, $env-pocket 0%, rgba($env-pocket, 0.7) 100%);
+    clip-path: polygon(0 100%, 50% 8%, 100% 100%);
+    border-radius: 0 0 6px 6px;
+  }
+}
+
+// Top flap — attached to the top edge of the body, folded DOWN over the front
+// Initially: triangle points downward covering the top of the body
+// On open: rotates upward (flips back behind the envelope)
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 160px; // triangle hangs down over the body
+  z-index: 4;
+  transform-origin: top center; // pivots at the top edge of the body
+  transition: transform 0.8s ease-in-out;
+
+  // The downward-pointing triangle (flap folded over the front)
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, $env-flap 0%, $env-flap-dark 80%);
+    clip-path: polygon(0 0, 100% 0, 50% 85%);
+    border-radius: 6px 6px 0 0;
+  }
+
+  .opening & {
+    transform: rotateX(180deg); // flips up and behind
+  }
+}
+
+// Wax seal — on the flap, near its tip
+.envelope-seal {
+  position: absolute;
+  top: 108px; // near the flap triangle tip
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle at 38% 35%,
+    #d4a88c 0%,
+    #c4956f 40%,
+    #a07858 100%
+  );
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 3px 10px rgba(#6b4e3d, 0.4),
+    inset 0 2px 3px rgba($white, 0.25),
+    inset 0 -2px 3px rgba(#6b4e3d, 0.15);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+
+  .opening & {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.5);
+  }
+}
+
+.seal-ring {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba($white, 0.2);
+}
+
+// Hint text
+.envelope-hint {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  color: $brown-lighter;
+  margin-top: 28px;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: pulse 2s ease-in-out infinite;
+
+  .opening & {
+    animation: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+}
+
+.hint-icon {
+  opacity: 0.6;
+}
+
+@keyframes envelopeFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-60px) scale(1.02);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+// Responsive envelope
+@media (max-width: 480px) {
+  .envelope-wrapper {
+    width: 300px;
+    height: 210px;
+  }
+
+  .envelope-flap {
+    height: 135px;
+
+    &::before {
+      clip-path: polygon(0 0, 100% 0, 50% 85%);
+    }
+  }
+
+  .envelope-seal {
+    top: 90px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .seal-ring {
+    width: 36px;
+    height: 36px;
+  }
+
+  .envelope-names {
+    font-size: 1.9rem;
+  }
+
+  .letter-inner {
+    padding: 16px 20px;
+  }
+}
+
+// ======================
 // Ornaments
 // ======================
 .ornament {

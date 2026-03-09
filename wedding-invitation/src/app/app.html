@@ -1,3 +1,60 @@
+<!-- Envelope Overlay -->
+@if (!envelopeOpen) {
+  <div class="envelope-overlay" [class.opening]="envelopeOpening" [class.fading]="envelopeFading" (click)="openEnvelope()">
+
+    <!-- Floating decorative petals -->
+    <div class="envelope-petals">
+      <span class="petal petal-1"></span>
+      <span class="petal petal-2"></span>
+      <span class="petal petal-3"></span>
+      <span class="petal petal-4"></span>
+      <span class="petal petal-5"></span>
+    </div>
+
+    <div class="envelope-wrapper">
+      <!-- Letter sits behind envelope, slides up above it on open -->
+      <div class="envelope-letter">
+        <div class="letter-inner">
+          <p class="letter-subtitle">Сватбена покана</p>
+          <p class="envelope-names">М & Т</p>
+          <div class="envelope-ornament">
+            <span class="envelope-ornament-line"></span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="#c4956f" stroke-width="1.5" fill="none"/>
+            </svg>
+            <span class="envelope-ornament-line"></span>
+          </div>
+          <p class="envelope-date">18 Юли 2026</p>
+          <p class="envelope-invite">Вие сте поканени!</p>
+        </div>
+      </div>
+
+      <!-- Envelope sits on top, fully covering the letter -->
+      <div class="envelope">
+        <div class="envelope-body"></div>
+        <div class="envelope-pocket"></div>
+        <div class="envelope-flap"></div>
+        <div class="envelope-seal">
+          <span class="seal-ring"></span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="#fff" opacity="0.85" stroke="#a07858" stroke-width="0.5"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <p class="envelope-hint">
+      <svg class="hint-icon" width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="#c4956f" opacity="0.5"/>
+      </svg>
+      Натиснете, за да отворите
+      <svg class="hint-icon" width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="#c4956f" opacity="0.5"/>
+      </svg>
+    </p>
+  </div>
+}
+
 <!-- Hero Section -->
 <section class="hero" style="background-image: url('img_1.png')">
   <div class="hero-inner">
