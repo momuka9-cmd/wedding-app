@@ -70,7 +70,11 @@
                 }
               ],
               "outputHashing": "all",
-              "fonts": false
+              "optimization": {
+                "scripts": true,
+                "styles": true,
+                "fonts": false
+              }
             },
             "development": {
               "optimization": false,
