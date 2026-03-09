@@ -95,6 +95,7 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
   position: relative;
   width: 360px;
   height: 250px; // just the envelope body size
+  margin-top: 120px;
 }
 
 // =====================
@@ -345,6 +346,13 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
   .envelope-wrapper {
     width: 300px;
     height: 210px;
+    margin-top: 100px;
+  }
+
+  .envelope-letter {
+    .opening & {
+      transform: translateY(-200px);
+    }
   }
 
   .envelope-flap {
