@@ -1,0 +1,105 @@
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="save-the-date">Save the Date</p>
+
+      <div class="ornament">
+        <span class="ornament-line"></span>
+        <svg class="ornament-leaf" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C6.5 7 3 12 3 16c0 3 2 5 5 5 1.5 0 2.8-.6 3.7-1.5.3-.3.3-.8 0-1.1-.9-.9-1.5-2.2-1.5-3.7 0-4 3.5-8 6.8-11.3C18.3 2.1 19 2 19.5 2.5c.5.5.4 1.2-.1 1.5C16 7 13 11 13 14.7c0 1.5.6 2.8 1.5 3.7.3.3.8.3 1.1 0C16.4 17.5 17 16.3 17 14.7c0-4-3.5-9-5-11" stroke="#d4a88c" stroke-width="1.5" fill="none"/>
+        </svg>
+        <span class="ornament-line"></span>
+      </div>
+
+      <h1 class="couple-names">Мирослав <span class="ampersand">&</span> Teodora</h1>
+
+      <div class="ornament">
+        <span class="ornament-line"></span>
+        <svg class="ornament-leaf" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C6.5 7 3 12 3 16c0 3 2 5 5 5 1.5 0 2.8-.6 3.7-1.5.3-.3.3-.8 0-1.1-.9-.9-1.5-2.2-1.5-3.7 0-4 3.5-8 6.8-11.3C18.3 2.1 19 2 19.5 2.5c.5.5.4 1.2-.1 1.5C16 7 13 11 13 14.7c0 1.5.6 2.8 1.5 3.7.3.3.8.3 1.1 0C16.4 17.5 17 16.3 17 14.7c0-4-3.5-9-5-11" stroke="#d4a88c" stroke-width="1.5" fill="none"/>
+        </svg>
+        <span class="ornament-line"></span>
+      </div>
+
+      <p class="wedding-date">18 Юли 2026</p>
+      <p class="subtitle">С любов Ви каним да споделите нашия специален ден</p>
+    </div>
+
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <img class="photo-img" src="us.JPG" alt="Мирослав & Teodora" />
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M7 13l5 5 5-5M7 6l5 5 5-5" stroke="#d4a88c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</section>
+
+<!-- Events Section -->
+<section class="events">
+  <h2 class="section-title">Програма</h2>
+
+  <div class="ornament ornament-small">
+    <span class="ornament-line"></span>
+    <svg class="ornament-leaf" width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2C6.5 7 3 12 3 16c0 3 2 5 5 5 1.5 0 2.8-.6 3.7-1.5.3-.3.3-.8 0-1.1-.9-.9-1.5-2.2-1.5-3.7 0-4 3.5-8 6.8-11.3C18.3 2.1 19 2 19.5 2.5c.5.5.4 1.2-.1 1.5C16 7 13 11 13 14.7c0 1.5.6 2.8 1.5 3.7.3.3.8.3 1.1 0C16.4 17.5 17 16.3 17 14.7c0-4-3.5-9-5-11" stroke="#d4a88c" stroke-width="1.5" fill="none"/>
+    </svg>
+    <span class="ornament-line"></span>
+  </div>
+
+  <div class="events-grid">
+    @for (event of events; track event.title) {
+      <div class="event-card">
+        <div class="event-icon">
+          @if (event.icon === 'civic') {
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+              <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4" stroke="#d4a88c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          }
+          @if (event.icon === 'church') {
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2v4M10 6h4M6 22V10l6-4 6 4v12M6 22h12M9 22v-5a3 3 0 0 1 6 0v5M12 10v3" stroke="#d4a88c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          }
+          @if (event.icon === 'party') {
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+              <path d="M8 22h8M12 2v2M12 11v3M4.93 4.93l1.41 1.41M17.66 6.34l1.41-1.41M2 12h3M19 12h3M6 18l2-6h8l2 6" stroke="#d4a88c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          }
+        </div>
+        <h3 class="event-title">{{ event.title }}</h3>
+        <p class="event-time">{{ event.time }}</p>
+        <p class="event-location">{{ event.location }}</p>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- RSVP Section -->
+<section class="rsvp">
+  <div class="rsvp-inner">
+    <h2 class="section-title">Очакваме Ви!</h2>
+
+    <div class="ornament ornament-small">
+      <span class="ornament-line"></span>
+      <svg class="ornament-leaf" width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2C6.5 7 3 12 3 16c0 3 2 5 5 5 1.5 0 2.8-.6 3.7-1.5.3-.3.3-.8 0-1.1-.9-.9-1.5-2.2-1.5-3.7 0-4 3.5-8 6.8-11.3C18.3 2.1 19 2 19.5 2.5c.5.5.4 1.2-.1 1.5C16 7 13 11 13 14.7c0 1.5.6 2.8 1.5 3.7.3.3.8.3 1.1 0C16.4 17.5 17 16.3 17 14.7c0-4-3.5-9-5-11" stroke="#d4a88c" stroke-width="1.5" fill="none"/>
+      </svg>
+      <span class="ornament-line"></span>
+    </div>
+
+    <p class="rsvp-text">Ще се радваме да бъдете с нас.</p>
+    <button class="rsvp-button">Потвърдете присъствие</button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p class="footer-names">M & T</p>
+  <p class="footer-date">18.Юли.2026</p>
+</footer>
