@@ -49,7 +49,7 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
   overflow: hidden;
 
   &.opening {
-    pointer-events: none;
+    cursor: default;
   }
 
   &.fading {
@@ -304,8 +304,8 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
 // Hint text
 .envelope-hint {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.05rem;
-  color: $brown-lighter;
+  font-size: 1.35rem;
+  color: $brown-light;
   margin-top: 28px;
   font-style: italic;
   letter-spacing: 0.08em;
@@ -325,6 +325,49 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
   opacity: 0.6;
 }
 
+// === Next button (arrow in circle) ===
+.next-button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid $peach;
+  background: rgba($white, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 32px;
+  transition: all 0.3s ease;
+  animation: nextButtonFadeIn 0.6s ease-out both;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 12px rgba($peach, 0.2);
+
+  &:hover {
+    background: $peach;
+    transform: scale(1.08);
+    box-shadow: 0 4px 20px rgba($peach, 0.35);
+
+    svg path {
+      stroke: $white;
+    }
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+@keyframes nextButtonFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes envelopeFadeOut {
   from {
     opacity: 1;
@@ -337,7 +380,7 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.5; }
+  0%, 100% { opacity: 0.7; }
   50% { opacity: 1; }
 }
 
@@ -380,6 +423,12 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
 
   .letter-inner {
     padding: 16px 20px;
+  }
+
+  .next-button {
+    width: 48px;
+    height: 48px;
+    margin-top: 24px;
   }
 }
 
@@ -448,7 +497,7 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba($cream, 0.45);
+    background: rgba($cream, 0.65);
     pointer-events: none;
   }
 }
@@ -471,24 +520,25 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
 
 .save-the-date {
   font-family: 'Great Vibes', cursive;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   font-weight: 400;
-  color: $peach;
+  color: $peach-dark;
   margin-bottom: 8px;
+  text-shadow: 0 1px 6px rgba($white, 0.8);
 }
 
 .couple-names {
   font-family: 'Great Vibes', cursive;
-  font-size: 4.5rem;
+  font-size: 5rem;
   font-weight: 400;
   color: $brown;
   line-height: 1.2;
   margin: 0;
-  text-shadow: 0 1px 8px rgba($white, 0.6);
+  text-shadow: 0 2px 12px rgba($white, 0.9), 0 0 30px rgba($white, 0.5);
 
   .ampersand {
     display: inline-block;
-    color: $peach;
+    color: $peach-dark;
     margin: 0 8px;
     font-style: italic;
   }
@@ -496,22 +546,24 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
 
 .wedding-date {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
-  font-weight: 400;
+  font-size: 1.7rem;
+  font-weight: 600;
   letter-spacing: 0.15em;
-  color: $peach-dark;
+  color: $brown;
   margin-top: 8px;
+  text-shadow: 0 1px 6px rgba($white, 0.8);
 }
 
 .subtitle {
   font-family: 'Great Vibes', cursive;
-  font-size: 1.6rem;
-  color: $peach-dark;
+  font-size: 1.8rem;
+  color: $brown-light;
   margin-top: 20px;
   line-height: 1.5;
   max-width: 450px;
   margin-left: auto;
   margin-right: auto;
+  text-shadow: 0 1px 6px rgba($white, 0.8);
 }
 
 // ======================
@@ -572,13 +624,16 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
 
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 28px;
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
 .event-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
   background: $white;
   border-radius: 16px;
   padding: 36px 24px;
@@ -587,6 +642,7 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
     0 1px 3px rgba($brown, 0.04);
   border: 1px solid rgba($peach, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 
   &:hover {
     transform: translateY(-4px);
@@ -623,6 +679,15 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
   font-size: 1rem;
   color: $brown-light;
   font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.location-pin {
+  flex-shrink: 0;
+  opacity: 1;
 }
 
 // ======================
@@ -653,6 +718,7 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  text-decoration: none;
   color: $white;
   background: linear-gradient(135deg, $peach 0%, $peach-dark 100%);
   border: none;
@@ -713,6 +779,7 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
   &:nth-child(1) { animation-delay: 0.1s; }
   &:nth-child(2) { animation-delay: 0.25s; }
   &:nth-child(3) { animation-delay: 0.4s; }
+  &:nth-child(4) { animation-delay: 0.55s; }
 }
 
 @keyframes fadeInUp {
@@ -740,8 +807,8 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
   }
 
   .events-grid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 500px;
   }
 
   .photo-frame {

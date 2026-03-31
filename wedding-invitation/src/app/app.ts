@@ -10,38 +10,53 @@ export class App {
   envelopeOpen = false;
   envelopeOpening = false;
   envelopeFading = false;
+  showNextButton = false;
 
   openEnvelope() {
     if (this.envelopeOpening) return;
     this.envelopeOpening = true;
-    // After flap opens and letter rises, wait a moment, then fade out
+    // After flap opens and letter rises, show the next button
     setTimeout(() => {
-      this.envelopeFading = true;
-    }, 2200);
+      this.showNextButton = true;
+    }, 1800);
+  }
+
+  goToDetails() {
+    this.envelopeFading = true;
     // Remove overlay from DOM after fade animation completes
     setTimeout(() => {
       this.envelopeOpen = true;
-    }, 3000);
+    }, 800);
   }
 
   events = [
     {
-      icon: 'civic',
-      title: 'Граждански ритуал',
-      time: '15:30',
-      location: 'Обреден дом Асеновград',
-    },
-    {
       icon: 'church',
       title: 'Църковен ритуал',
-      time: '16:30',
-      location: 'Храм "Св. Георги"',
+      time: '15:00',
+      location: 'Бачковски Манастир',
+      mapUrl: 'https://maps.app.goo.gl/pidALxaHRqw5dTLBA',
+    },
+    {
+      icon: 'welcome drink',
+      title: 'Welcome Drink',
+      time: '16:00',
+      location: 'Хотел Сани (гр. Асеновград) - Ресторант - Тераса',
+      mapUrl: 'https://maps.app.goo.gl/K3eiEifwKFwkxv9j6',
+    },
+    {
+      icon: 'civic',
+      title: 'Граждански ритуал',
+      time: '17:30',
+      location: 'Хотел Сани (гр. Асеновград) - Ресторант - Тераса',
+      mapUrl: 'https://maps.app.goo.gl/K3eiEifwKFwkxv9j6',
     },
     {
       icon: 'party',
       title: 'Сватбено тържество',
-      time: '18:00',
-      location: 'Ресторант',
+      time: '18:30',
+      location: 'Хотел Сани (гр. Асеновград) - Ресторант',
+      mapUrl: 'https://maps.app.goo.gl/K3eiEifwKFwkxv9j6',
     },
   ];
 }

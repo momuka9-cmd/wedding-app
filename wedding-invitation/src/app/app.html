@@ -24,7 +24,7 @@
             </svg>
             <span class="envelope-ornament-line"></span>
           </div>
-          <p class="envelope-date">18 Юли 2026</p>
+          <p class="envelope-date">25 Юли 2026</p>
           <p class="envelope-invite">Вие сте поканени!</p>
         </div>
       </div>
@@ -52,6 +52,14 @@
         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="#c4956f" opacity="0.5"/>
       </svg>
     </p>
+
+    @if (showNextButton) {
+      <button class="next-button" (click)="goToDetails(); $event.stopPropagation()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M5 12h14M13 6l6 6-6 6" stroke="#c4956f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    }
   </div>
 }
 
@@ -79,7 +87,7 @@
         <span class="ornament-line"></span>
       </div>
 
-      <p class="wedding-date">18 Юли 2026</p>
+      <p class="wedding-date">25 Юли 2026</p>
       <p class="subtitle">С любов Ви каним да споделите нашия специален ден</p>
     </div>
 
@@ -111,7 +119,7 @@
 
   <div class="events-grid">
     @for (event of events; track event.title) {
-      <div class="event-card">
+      <a class="event-card" [href]="event.mapUrl" target="_blank" rel="noopener noreferrer">
         <div class="event-icon">
           @if (event.icon === 'civic') {
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
@@ -128,11 +136,24 @@
               <path d="M8 22h8M12 2v2M12 11v3M4.93 4.93l1.41 1.41M17.66 6.34l1.41-1.41M2 12h3M19 12h3M6 18l2-6h8l2 6" stroke="#d4a88c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           }
+          @if (event.icon === 'welcome drink') {
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+              <path d="M8 2h8l-1 9H9L8 2z" stroke="#d4a88c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 11v5M9 16h6" stroke="#d4a88c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 5h2a2 2 0 0 1 0 4h-1.5" stroke="#d4a88c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          }
         </div>
         <h3 class="event-title">{{ event.title }}</h3>
         <p class="event-time">{{ event.time }}</p>
-        <p class="event-location">{{ event.location }}</p>
-      </div>
+        <p class="event-location">
+          <svg class="location-pin" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#d4a88c" stroke-width="1.5" fill="none"/>
+            <circle cx="12" cy="9" r="2.5" stroke="#d4a88c" stroke-width="1.5" fill="none"/>
+          </svg>
+          {{ event.location }}
+        </p>
+      </a>
     }
   </div>
 </section>
@@ -151,12 +172,12 @@
     </div>
 
     <p class="rsvp-text">Ще се радваме да бъдете с нас.</p>
-    <button class="rsvp-button">Потвърдете присъствие</button>
+    <a class="rsvp-button" href="https://docs.google.com/forms/d/e/1FAIpQLSfncxPxtiaAhAhGnq1tQXBDvPLY0sZ2dnrmfKe2Udt7ax827Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Потвърдете присъствие</a>
   </div>
 </section>
 
 <!-- Footer -->
 <footer class="footer">
   <p class="footer-names">M & T</p>
-  <p class="footer-date">18.Юли.2026</p>
+  <p class="footer-date">25.Юли.2026</p>
 </footer>
