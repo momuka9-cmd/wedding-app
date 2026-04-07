@@ -327,6 +327,10 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
 
 // === Next button (arrow in circle) ===
 .next-button {
+  position: absolute;
+  bottom: calc(50% - 240px);
+  left: 50%;
+  margin-left: -28px;
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -336,7 +340,6 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin-top: 32px;
   transition: all 0.3s ease;
   animation: nextButtonFadeIn 0.6s ease-out both;
   backdrop-filter: blur(4px);
@@ -356,6 +359,19 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
     transform: scale(0.96);
   }
 }
+
+//.next-hint {
+//  position: absolute;
+//  bottom: calc(50% - 300px);
+//  left: 50%;
+//  transform: translateX(-50%);
+//  white-space: nowrap;
+//  font-family: 'Cormorant Garamond', serif;
+//  font-size: 1rem;
+//  font-style: italic;
+//  color: $brown-light;
+//  animation: nextButtonFadeIn 0.6s ease-out 0.3s both;
+//}
 
 @keyframes nextButtonFadeIn {
   from {
@@ -428,7 +444,13 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
   .next-button {
     width: 48px;
     height: 48px;
-    margin-top: 24px;
+    margin-left: -24px;
+    bottom: calc(50% - 180px);
+  }
+
+  .next-hint {
+    bottom: calc(50% - 220px);
+    font-size: 0.9rem;
   }
 }
 
@@ -603,14 +625,29 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
   animation: bounce 2s ease-in-out infinite;
-  opacity: 0.5;
   z-index: 1;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.scroll-hint-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  color: $brown;
+  text-shadow: 0 1px 6px rgba($white, 0.9);
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(8px); }
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.7; }
+  50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
 }
 
 // ======================
@@ -624,7 +661,7 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
 
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 28px;
   max-width: 1100px;
   margin: 0 auto;
@@ -708,6 +745,18 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
   font-size: 1.2rem;
   font-style: italic;
   color: $brown-light;
+  margin-bottom: 12px;
+}
+
+.rsvp-gift {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.5rem;
+  color: $peach-dark;
+  font-style: normal;
+}
+
+.rsvp-hotel {
+  font-size: 1.05rem;
   margin-bottom: 32px;
 }
 
@@ -779,7 +828,6 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
   &:nth-child(1) { animation-delay: 0.1s; }
   &:nth-child(2) { animation-delay: 0.25s; }
   &:nth-child(3) { animation-delay: 0.4s; }
-  &:nth-child(4) { animation-delay: 0.55s; }
 }
 
 @keyframes fadeInUp {
@@ -849,5 +897,10 @@ $env-liner: #f5ede6;       // cream liner visible behind letter
   .rsvp-button {
     padding: 16px 36px;
     font-size: 0.9rem;
+  }
+
+  .scroll-hint {
+    left: 15%;
+    transform: none;
   }
 }

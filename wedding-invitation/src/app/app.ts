@@ -29,6 +29,10 @@ export class App {
     }, 800);
   }
 
+  scrollToEvents() {
+    document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' });
+  }
+
   events = [
     {
       icon: 'church',
@@ -36,13 +40,6 @@ export class App {
       time: '15:00',
       location: 'Бачковски Манастир',
       mapUrl: 'https://maps.app.goo.gl/pidALxaHRqw5dTLBA',
-    },
-    {
-      icon: 'welcome drink',
-      title: 'Welcome Drink',
-      time: '16:00',
-      location: 'Хотел Сани (гр. Асеновград) - Ресторант - Тераса',
-      mapUrl: 'https://maps.app.goo.gl/K3eiEifwKFwkxv9j6',
     },
     {
       icon: 'civic',

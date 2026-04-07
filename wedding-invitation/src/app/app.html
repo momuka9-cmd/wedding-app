@@ -98,15 +98,16 @@
     </div>
   </div>
 
-  <div class="scroll-hint">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M7 13l5 5 5-5M7 6l5 5 5-5" stroke="#d4a88c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <a class="scroll-hint" href="#events" (click)="$event.preventDefault(); scrollToEvents()">
+    <span class="scroll-hint-text">Разгледайте</span>
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+      <path d="M7 10l5 5 5-5" stroke="#b8886a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-  </div>
+  </a>
 </section>
 
 <!-- Events Section -->
-<section class="events">
+<section class="events" id="events">
   <h2 class="section-title">Програма</h2>
 
   <div class="ornament ornament-small">
@@ -136,13 +137,6 @@
               <path d="M8 22h8M12 2v2M12 11v3M4.93 4.93l1.41 1.41M17.66 6.34l1.41-1.41M2 12h3M19 12h3M6 18l2-6h8l2 6" stroke="#d4a88c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           }
-          @if (event.icon === 'welcome drink') {
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-              <path d="M8 2h8l-1 9H9L8 2z" stroke="#d4a88c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M12 11v5M9 16h6" stroke="#d4a88c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M16 5h2a2 2 0 0 1 0 4h-1.5" stroke="#d4a88c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          }
         </div>
         <h3 class="event-title">{{ event.title }}</h3>
         <p class="event-time">{{ event.time }}</p>
@@ -161,7 +155,7 @@
 <!-- RSVP Section -->
 <section class="rsvp">
   <div class="rsvp-inner">
-    <h2 class="section-title">Очакваме Ви!</h2>
+
 
     <div class="ornament ornament-small">
       <span class="ornament-line"></span>
@@ -172,7 +166,11 @@
     </div>
 
     <p class="rsvp-text">Ще се радваме да бъдете с нас.</p>
+    <p class="rsvp-text rsvp-gift">За подаръци не мислете, а в плик ги поставете.</p>
+    <p class="rsvp-text rsvp-hotel">За гостите ни е осигурена 25% отстъпка от цената за нощувка в хотел Сани, гр. Асеновград.</p>
+    <h2 class="section-title">Очакваме Ви!</h2>
     <a class="rsvp-button" href="https://docs.google.com/forms/d/e/1FAIpQLSfncxPxtiaAhAhGnq1tQXBDvPLY0sZ2dnrmfKe2Udt7ax827Q/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Потвърдете присъствие</a>
+
   </div>
 </section>
 
