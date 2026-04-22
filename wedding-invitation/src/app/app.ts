@@ -44,14 +44,14 @@ export class App {
     {
       icon: 'civic',
       title: 'Граждански ритуал',
-      time: '17:30',
+      time: '18:30',
       location: 'Хотел Сани (гр. Асеновград) - Ресторант - Тераса',
       mapUrl: 'https://maps.app.goo.gl/K3eiEifwKFwkxv9j6',
     },
     {
       icon: 'party',
       title: 'Сватбено тържество',
-      time: '18:30',
+      time: '19:30',
       location: 'Хотел Сани (гр. Асеновград) - Ресторант',
       mapUrl: 'https://maps.app.goo.gl/K3eiEifwKFwkxv9j6',
     },
